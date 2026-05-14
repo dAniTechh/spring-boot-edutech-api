@@ -10,6 +10,7 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 
+@Entity
 public class Estudiante {
 
     @Id
@@ -19,12 +20,48 @@ public class Estudiante {
     private String nombre;
     private String email;
 
-    // Aquí definimos la relación de Muchos a Muchos
     @ManyToMany
     @JoinTable(
-        name = "inscripciones", // Así se llamará la tabla intermedia en la base de datos
-        joinColumns = @JoinColumn(name = "estudiante_id"), // Columna para el ID del estudiante
-        inverseJoinColumns = @JoinColumn(name = "curso_id") // Columna para el ID del curso
+        name = "inscripciones", 
+        joinColumns = @JoinColumn(name = "estudiante_id"), 
+        inverseJoinColumns = @JoinColumn(name = "curso_id") 
     )
-    private List<Curso> cursos;
+    private List<Curso> inscripciones;
+
+    // Constructor vacío (obligatorio para JPA)
+    public Estudiante() {
+    }
+
+    // Getters y Setters generados a mano (Adiós Lombok)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public List<Curso> getInscripciones() {
+        return inscripciones;
+    }
+
+    public void setInscripciones(List<Curso> inscripciones) {
+        this.inscripciones = inscripciones;
+    }
 }

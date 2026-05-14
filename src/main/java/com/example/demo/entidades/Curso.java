@@ -9,15 +9,10 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.OneToMany;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
-@Getter @Setter @NoArgsConstructor @AllArgsConstructor
-
 public class Curso {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -25,12 +20,55 @@ public class Curso {
     private String titulo;
     private String descripcion;
 
-    // Un curso tiene muchas lecciones.
-    // 'mappedBy' indica que la relación la "manda" el campo 'curso' en la clase Leccion [cite: 482]
-    // 'cascade' asegura que si guardas/borras un curso, afecte a sus lecciones [cite: 484]
     @OneToMany(mappedBy = "curso", cascade = CascadeType.ALL)
     private List<Leccion> lecciones;   
-    // El 'mappedBy' apunta al nombre de la variable en la clase Estudiante
-    @ManyToMany(mappedBy = "cursos")
+    
+    // mappedBy apunta a la lista "inscripciones" que acabamos de poner en Estudiante
+    @ManyToMany(mappedBy = "inscripciones")
     private List<Estudiante> estudiantes; 
+
+    // Constructor vacío
+    public Curso() {
+    }
+
+    // Getters y Setters
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public List<Leccion> getLecciones() {
+        return lecciones;
+    }
+
+    public void setLecciones(List<Leccion> lecciones) {
+        this.lecciones = lecciones;
+    }
+
+    public List<Estudiante> getEstudiantes() {
+        return estudiantes;
+    }
+
+    public void setEstudiantes(List<Estudiante> estudiantes) {
+        this.estudiantes = estudiantes;
+    }
 }
