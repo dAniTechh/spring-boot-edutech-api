@@ -1,5 +1,7 @@
 package com.example.demo.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +21,7 @@ public class Leccion {
 
     @ManyToOne 
     @JoinColumn(name = "curso_id") 
+    @JsonIgnore
     private Curso curso;
 
     // Constructor vacío

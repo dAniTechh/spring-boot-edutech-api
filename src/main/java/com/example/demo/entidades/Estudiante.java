@@ -2,6 +2,8 @@ package com.example.demo.entidades;
 
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -26,6 +28,7 @@ public class Estudiante {
         joinColumns = @JoinColumn(name = "estudiante_id"), 
         inverseJoinColumns = @JoinColumn(name = "curso_id") 
     )
+    @JsonIgnore
     private List<Curso> inscripciones;
 
     // Constructor vacío (obligatorio para JPA)
