@@ -1,9 +1,14 @@
 package com.example.demo.entidades;
 
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.*;    
+import jakarta.persistence.Entity;  
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity // Indica que es una tabla en la BD [cite: 174]
+@Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Leccion {
     @Id // Clave única [cite: 211]

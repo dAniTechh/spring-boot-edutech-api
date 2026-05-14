@@ -16,6 +16,7 @@ import lombok.Setter;
 
 @Entity
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
+
 public class Curso {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
